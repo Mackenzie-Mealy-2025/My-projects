@@ -15,49 +15,59 @@ def save_data(filename, data, fieldnames):
         writer.writeheader()
         writer.writerows(data)
 
-def menu():          #menu1
+def menu():
+    chicken_record = load_data("chicken_record.csv")
     while True:
         print("\nMain Menu:")
-        print("1.Print Chicken List.")
-        print("2.Create New Chicken Record.")
-        print("3.Update Existing Chicken Record.")
-        print("4.Delete A Existing Chicken Record.")
-        print("0.Exit.")
-        
+        print("1. Print Chicken List.")
+        print("2. Create New Chicken Record.")
+        print("3. Update Existing Chicken Record.")
+        print("4. Delete An Existing Chicken Record.")
+        print("0. Exit.")
+
         option = input("Enter your choice: ")
-        
+
         if option == "0":
             print("Exiting application...")
             break
-        
+
         elif option == "1":
-            while True:
-                print("\Printing Chicken List:")
-                if option:
-                    for index, product in enumerate(option, start=1):
-                            print(f"{index}: {product}")
-                    else:
-                        print("No products available.")
-                        
-#---------------------------------------------------------------------------------------------------------------------------
+            print("\nPrinting Chicken List:")
+            if chicken_record:
+                for index, product in enumerate(chicken_record, start=1):
+                    print(f"{index}: {product}")
+            else:
+                print("No products available.")
+
         elif option == "2":
-                    chicken_record = input("Enter new product name: ")
-                    option.append({"name": chicken_record})
-                    save_data("chicken_record.csv", option, fieldnames=["name"])# save data 
-                    print(f"Product '{chicken_record}' added successfully!")
+            new_name = input("Enter new product name: ")
+            chicken_record.append({"name": new_name})
+            save_data("chicken_record.csv", chicken_record, fieldnames=["name"])
+            print(f"Product '{new_name}' added successfully!")
 
-                
-#---------------------------------------------------------------------------------------------------------------------------
-        elif option =="3":
-            print("Update functionality not implemented yet.")#change
-
-
-#---------------------------------------------------------------------------------------------------------------------------
+        elif option == "3":
+            print("\nUpdating existing record:")
+        if chicken_record:
+            for index, order in enumerate(chicken_record, start=1):
+                print(f"{index}: {order}")
+            try:
+                record_index = int(input("Enter the record number to update: ")) - 1
+                if 0 <= record_index < len(chicken_record):
+                    # Placeholder update logic
+                    print(f"Selected record: {chicken_record[record_index]}")
+                    print("Update functionality will be available soon.")
+                else:
+                    print("Invalid selection.")
+            except ValueError:
+                print("Invalid input. Please enter a valid order number.")
+            else:
+                print("No records available to update.")
+        
         elif option == "4":
-                    print("\nProduct List:")
+                print("\nProduct List:")
+                if chicken_record:
                     for index, product in enumerate(chicken_record, start=1):
                         print(f"{index}: {product['name']}")
-
                     try:
                         remove_index = int(input("Enter the number of the product to remove: ")) - 1
                         if 0 <= remove_index < len(chicken_record):
@@ -67,7 +77,7 @@ def menu():          #menu1
                         else:
                             print("Invalid selection.")
                     except ValueError:
-                        print("Invalid input. Please enter a number.") #fixed!
-
-                    else:
-                     print("No products available to delete.")
+                        print("Invalid input. Please enter a number.")
+                else:
+                    print("No products available to delete.")
+menu()
