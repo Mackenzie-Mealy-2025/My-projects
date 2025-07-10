@@ -38,12 +38,14 @@ def menu():
                     print(f"{index}: {product}")
             else:
                 print("No products available.")
+#----------------------------------------------------------------------------------------------------------------------
 
         elif option == "2":
             new_name = input("Enter new product name: ")
             chicken_record.append({"name": new_name})
             save_data("chicken_record.csv", chicken_record, fieldnames=["name"])
             print(f"Product '{new_name}' added successfully!")
+#----------------------------------------------------------------------------------------------------------------------
 
         elif option == "3":
             print("\nUpdating existing record:")
@@ -62,7 +64,7 @@ def menu():
                 print("Invalid input. Please enter a valid order number.")
             else:
                 print("No records available to update.")
-        
+#----------------------------------------------------------------------------------------------------------------------
         elif option == "4":
                 print("\nProduct List:")
                 if chicken_record:
