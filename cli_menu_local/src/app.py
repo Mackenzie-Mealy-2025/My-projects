@@ -60,31 +60,32 @@ def menu():
 
         # Update an existing chicken record
         elif option == "3":
-            print("\nUpdating existing record:")
+            print("\nUpdating existing chicken:")
             if chicken_record:
-                # Display all records with index numbers
+                # PRINT chicken names with index value
                 for index, record in enumerate(chicken_record, start=1):
                     print(f"{index}: {record['name']}")
                 try:
-                    # Ask the user which record to update
-                    record_index = int(input("Enter the record number to update: ")) - 1
+                    # GET user input for chicken index value
+                    record_index = int(input("Enter the number of the chicken to update: ")) - 1
                     if 0 <= record_index < len(chicken_record):
-                        print(f"Selected record: {chicken_record[record_index]['name']}")
-                        new_name = input("Enter the new name for this product: ")
+                        # GET user input for new chicken name
+                        new_name = input("Enter the new name for this chicken: ")
                         confirm = input(f"Confirm update to '{new_name}'? (y/n): ").lower()
                         if confirm == 'y':
-                            # Update the name and save
+                            # UPDATE chicken name at index in chickens list
                             chicken_record[record_index]['name'] = new_name
                             save_data("chicken_record.csv", chicken_record, fieldnames=["name"])
-                            print("Record updated successfully.")
+                            print("Chicken record updated successfully!")
                         else:
                             print("Update cancelled.")
                     else:
-                        print("Invalid selection.")
+                        print("Invalid selection. Index out of range.")
                 except ValueError:
-                    print("Invalid input. Please enter a valid number.")
+                    print("Invalid input. Please enter a number.")
             else:
-                print("No records available to update.")
+                print("No chickens available to update.")
+
 
 #----------------------------------------------------------------------------------------------------------------------
 
