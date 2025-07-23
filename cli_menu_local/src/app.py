@@ -54,7 +54,8 @@ def menu():
             new_name = input("Enter new product name: ")
             chicken_record.append({"name": new_name})  # Add to the in-memory list
             save_data("chicken_record.csv", chicken_record, fieldnames=["name"])  # Save to CSV
-            print(f"Product '{new_name}' added successfully!")
+            print(f"Product '{new_name}' added successfully!") 
+            #George, Fleur, Devon, Casey, Marigold' Apple Mint
 
 #----------------------------------------------------------------------------------------------------------------------
 
