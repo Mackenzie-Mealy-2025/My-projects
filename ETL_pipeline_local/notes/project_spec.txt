@@ -1,4 +1,5 @@
 This project will be a solo adventure in a full scale ETL/ELT pipeline
-where I get to experiance all aspects of the work for myself instead of 
+where I get to experiance all aspects of the work for myself
+giving me an opertunity to work full scale without 
 having a full five person team of aspiring data engeneers
-~~02/07/2025
+~~03/11/2025
